@@ -19,7 +19,7 @@ import com.bloodbank.backend.entity.BloodStock;
 import com.bloodbank.backend.service.BloodStockService;
 
 @RestController
-@RequestMapping
+@RequestMapping("/api/blood-stock")
 @CrossOrigin(origins = "http://localhost:3000")
 public class BloodStockController {
 
@@ -30,10 +30,10 @@ public class BloodStockController {
 	}
 
 	@PostMapping
-	public ResponseEntity<BloodStock> createStock(@RequestBody BloodStock stock) {
-		BloodStock savedStock = bloodStockService.createStock(stock);
-		return new ResponseEntity<>(savedStock, HttpStatus.CREATED);
-	}
+    public ResponseEntity<BloodStock> createStock(@RequestBody BloodStock stock) {
+        BloodStock saved = bloodStockService.createStock(stock);
+        return new ResponseEntity<>(saved, HttpStatus.CREATED);
+    }
 
 	@GetMapping
 	public ResponseEntity<List<BloodStock>> getAllStock() {
